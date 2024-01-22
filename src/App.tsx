@@ -2,11 +2,18 @@ import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 import AppLayout from './layouts/AppLayout'
 import EnglishLearningPage from './pages/EnglishLearningPage'
 import HomePage from './pages/HomePage'
+import HomeLayout from './layouts/HomeLayout'
 
 const router = createBrowserRouter([
   {
     path: '/',
-    element: <HomePage />,
+    element: <HomeLayout />,
+    children: [
+      {
+        index: true,
+        element: <HomePage />,
+      },
+    ],
   },
   {
     path: '/app',
