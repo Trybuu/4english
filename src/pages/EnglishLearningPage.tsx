@@ -3,7 +3,7 @@ import { useEffect, useState } from 'react'
 import { NavLink } from 'react-router-dom'
 
 function EnglishLearningPage() {
-  const [word, setWord] = useState('Fetching word from the server...')
+  const [word, setWord] = useState()
 
   useEffect(() => {
     axios
@@ -11,15 +11,11 @@ function EnglishLearningPage() {
       .then((response) => setWord(response.data))
   }, [])
 
-  if (!word) {
-    return <p>Can't get word from server</p>
-  }
-
   return (
     <>
       <NavLink to="..">Back to welcome page</NavLink>
       <h1>Word for today</h1>
-      <h2>{word}</h2>
+      <h2>{word ? word : 'Loading...'}</h2>
     </>
   )
 }
