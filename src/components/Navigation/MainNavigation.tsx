@@ -1,6 +1,6 @@
 import { NavLink } from 'react-router-dom'
 import classes from './MainNavigation.module.scss'
-import Wrapper from '../ui/wrapper/Wrapper'
+import Wrapper from '../../ui/wrapper/Wrapper'
 
 export default function MainNavigation() {
   return (
