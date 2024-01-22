@@ -24,7 +24,10 @@ function EnglishLearningPage() {
   return (
     <>
       <NavLink to="..">Back to welcome page</NavLink>
-      <h1>Word for today</h1>
+      <h1>
+        Word for
+        <br /> today
+      </h1>
       {isLoading ? (
         <p>Loading...</p>
       ) : (
