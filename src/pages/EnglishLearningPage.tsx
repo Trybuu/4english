@@ -1,21 +1,35 @@
-import axios from 'axios'
 import { useEffect, useState } from 'react'
 import { NavLink } from 'react-router-dom'
+import getRandomWord, { Word } from '../helpers/getRandomWord'
 
 function EnglishLearningPage() {
-  const [word, setWord] = useState()
+  const [word, setWord] = useState<Word[] | null>()
+  const [isLoading, setIsLoading] = useState(true)
 
   useEffect(() => {
-    axios
-      .get('https://random-word-api.herokuapp.com/word')
-      .then((response) => setWord(response.data))
+    const fetchData = async () => {
+      try {
+        const word = await getRandomWord()
+        setWord(word)
+        setIsLoading(false)
+      } catch (error) {
+        console.error(`Can not fetch word from the server: ${error}`)
+        setIsLoading(false)
+      }
+    }
+
+    fetchData()
   }, [])
 
   return (
     <>
       <NavLink to="..">Back to welcome page</NavLink>
       <h1>Word for today</h1>
-      <h2>{word ? word : 'Loading...'}</h2>
+      {isLoading ? (
+        <p>Loading...</p>
+      ) : (
+        <h2>{word ? word[0].word : 'Unable to fetch word'}</h2>
+      )}
     </>
   )
 }
