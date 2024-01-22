@@ -37,7 +37,7 @@ async function getWord() {
   const response = await axios.get<string[]>(
     'https://random-word-api.herokuapp.com/word',
   )
-  const [data] = [...response.data]
+  const data = response.data[0]
 
   return data
 }
