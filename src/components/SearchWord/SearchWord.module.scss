@@ -1,5 +1,9 @@
 @import '../../styles/mixins';
 
-.random-word-wrapper {
+.section-wrapper {
   @include section-styles;
+}
+
+.form {
+  @include form-styles;
 }

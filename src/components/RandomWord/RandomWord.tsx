@@ -1,6 +1,5 @@
 import { useEffect, useState } from 'react'
 import getRandomWord, { Word } from '../../helpers/getRandomWord'
-import sendRequest from '../../helpers/TranslateWord'
 
 import classes from './RandomWord.module.scss'
 
@@ -22,8 +21,6 @@ export default function RandomWord() {
 
     fetchData()
   }, [])
-
-  sendRequest()
 
   return (
     <section className={classes['random-word-wrapper']}>

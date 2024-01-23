@@ -1,0 +1,30 @@
+@import './variables';
+
+@mixin section-styles {
+  margin: 2rem 0;
+  padding: 1rem;
+  border: 1px solid rgba(168, 168, 168, 0.517);
+}
+
+@mixin form-styles {
+  display: flex;
+  gap: 2rem;
+  input {
+    width: 100%;
+
+    padding: 1rem;
+
+    background-color: transparent;
+    border: none;
+
+    &:focus {
+      outline: 1px solid $accent-color;
+    }
+  }
+
+  button {
+    background-color: $accent-color;
+    color: #fff;
+    border-radius: 0;
+  }
+}
