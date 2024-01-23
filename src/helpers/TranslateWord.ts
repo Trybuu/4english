@@ -1,21 +1,22 @@
 import axios from 'axios'
 
 const authKey = import.meta.env.DEEPL_API_KEY
-const apiUrl = import.meta.env.DEEPL_URL
+// const apiUrl = import.meta.env.DEEPL_URL
 const userAgent = window.navigator.userAgent
 
 // Dane do wysłania
 const data = {
   text: ['Hello, world!'],
-  target_lang: 'DE',
+  target_lang: 'PL',
 }
 
 // Konfiguracja opcji zapytania
 const axiosConfig = {
   headers: {
-    Authorization: `DeepL-Auth-Key ${authKey}`,
+    Authorization: `DeepL-Auth-Key [${authKey}]`,
     'User-Agent': userAgent,
     'Content-Type': 'application/json',
+    'Content-Length': 45,
   },
 }
 
@@ -26,11 +27,11 @@ function sendRequest() {
     .then((response) => {
       console.log('Response:', response.data)
       // Tutaj możesz obsłużyć odpowiedź od serwera
-    })
-    .catch((error) => {
+    }),
+    (error: object) => {
       console.error('Error:', error)
       // Tutaj możesz obsługiwać błędy komunikacji
-    })
+    }
 }
 
 export default sendRequest
