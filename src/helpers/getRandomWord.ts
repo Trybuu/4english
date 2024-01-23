@@ -42,7 +42,7 @@ async function getWord() {
   return data
 }
 
-async function getWordDetails(word: string) {
+export async function getWordDetails(word: string) {
   const response = await axios.get(
     `https://api.dictionaryapi.dev/api/v2/entries/en/${word}`,
   )
