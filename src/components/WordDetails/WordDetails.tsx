@@ -3,6 +3,8 @@ import classes from './WordDetails.module.scss'
 import { useEffect, useState } from 'react'
 
 import { Word } from '../../helpers/getRandomWord'
+import MainWordDetails from './MainWordDetails/MainWordDetails'
+
 interface WordState {
   word: Word[] | null
 }
@@ -25,58 +27,51 @@ export default function WordDetails() {
     <>
       <section className={classes['section-wrapper']}>
         <h2>Word Details</h2>
+
         {wordData === null
           ? ''
           : wordData.map((data, index) => (
-              <section className={classes['word-details']} key={Math.random()}>
-                <div className={classes['word-details__main']}>
-                  <h3 className={classes['word-details__word']}>{data.word}</h3>
-                  {data.phonetics.map((phonetic, index) => {
-                    return (
-                      <>
-                        <p key={Math.random()}>
-                          {phonetic.text !== undefined
-                            ? phonetic.text
-                            : "Ther's no phonetic"}{' '}
-                          {renderAudioPlayer(phonetic.audio)}
-                        </p>
-                      </>
-                    )
-                  })}
-                </div>
+              <>
+                <section
+                  className={classes['word-details']}
+                  key={Math.random()}
+                >
+                  <MainWordDetails
+                    word={data.word}
+                    phonetics={data.phonetics}
+                  />
+                  <div>
+                    {data.meanings.map((meaning, index) => {
+                      return (
+                        <>
+                          <div
+                            className={classes['part-of-speech']}
+                            key={index * Math.random()}
+                          >
+                            <p className={classes['part-of-speech__text']}>
+                              {meaning.partOfSpeech}
+                              <span
+                                className={classes['part-of-speech__stripe']}
+                              ></span>
+                            </p>
+                          </div>
 
-                <div>
-                  {data.meanings.map((meaning, index) => {
-                    return (
-                      <>
-                        <div
-                          className={classes['part-of-speech']}
-                          key={index * Math.random()}
-                        >
-                          <p className={classes['part-of-speech__text']}>
-                            {meaning.partOfSpeech}
-                            <span
-                              className={classes['part-of-speech__stripe']}
-                            ></span>
-                          </p>
-                        </div>
+                          <h4>Definition</h4>
+                          <ul>
+                            {meaning.definitions.map((definition) => {
+                              return (
+                                <ul key={definition.definition}>
+                                  <li>{definition.definition}</li>
+                                </ul>
+                              )
+                            })}
+                          </ul>
+                        </>
+                      )
+                    })}
+                  </div>
 
-                        <h4>Definition</h4>
-                        <ul>
-                          {meaning.definitions.map((definition) => {
-                            return (
-                              <ul key={definition.definition}>
-                                <li>{definition.definition}</li>
-                              </ul>
-                            )
-                          })}
-                        </ul>
-                      </>
-                    )
-                  })}
-                </div>
-
-                {/* <div>
+                  {/* <div>
                   <h3>License</h3>
                   <a href={data.license.url} target="_blank">
                     {data.license.name}
@@ -93,7 +88,8 @@ export default function WordDetails() {
                     ))}
                   </ul>
                 </div> */}
-              </section>
+                </section>
+              </>
             ))}
       </section>
     </>
