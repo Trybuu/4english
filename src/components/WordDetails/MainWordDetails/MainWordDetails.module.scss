@@ -1,0 +1,38 @@
+.button-play {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0;
+  background-color: transparent;
+
+  &__icon {
+    width: 1rem;
+    height: 1rem;
+  }
+}
+
+.button-play:disabled .button-play {
+  background-color: red;
+  &__icon {
+    filter: brightness(2);
+  }
+}
+
+.word {
+  font-size: 1.5rem;
+
+  @media screen and (min-width: 768px) {
+    font-size: 2.5rem;
+  }
+  @media screen and (min-width: 1024px) {
+    font-size: 4rem;
+  }
+}
+
+.phonetics {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+
+  min-width: 40%;
+}

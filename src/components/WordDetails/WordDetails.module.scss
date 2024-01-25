@@ -5,18 +5,6 @@
 }
 
 .word-details {
-  &__main {
-    margin-bottom: 2rem;
-  }
-
-  &__word {
-    font-size: 2rem;
-
-    @media screen and (min-width: 768px) {
-      font-size: 4rem;
-    }
-  }
-
   li {
     margin-left: 2rem;
   }
