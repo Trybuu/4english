@@ -4,6 +4,11 @@
   margin: 2rem 0;
   padding: 1rem;
   border: 1px solid rgba(168, 168, 168, 0.517);
+
+  h2 {
+    border-bottom: 1px solid rgba(168, 168, 168, 0.517);
+    margin-bottom: 1rem;
+  }
 }
 
 @mixin form-styles {

@@ -3,16 +3,27 @@ import { increment } from '../../features/word/wordSlice'
 import { useRef } from 'react'
 
 import classes from './SearchWord.module.scss'
+import axios from 'axios'
 
 export default function SearchWord() {
   const dispatch = useDispatch()
 
   const searchInput = useRef<HTMLInputElement>(null)
 
-  function handleSearchWord(e: React.FormEvent) {
-    e.preventDefault()
+  async function handleSearchWord(e: React.FormEvent) {
+    try {
+      e.preventDefault()
 
-    dispatch(increment({ word: searchInput.current?.value ?? '' }))
+      const response = await axios.get(
+        `https://api.dictionaryapi.dev/api/v2/entries/en/${
+          searchInput.current?.value ?? ''
+        }`,
+      )
+
+      dispatch(increment({ word: response.data }))
+    } catch (error) {
+      console.log(error)
+    }
   }
 
   return (
