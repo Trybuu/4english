@@ -1,5 +1,38 @@
-@import '../../styles/mixins';
+@import '../../styles/variables', '../../styles/mixins';
 
 .section-wrapper {
   @include section-styles;
+}
+
+.word-details {
+  &__main {
+    margin-bottom: 2rem;
+  }
+
+  &__word {
+    font-size: 2rem;
+
+    @media screen and (min-width: 768px) {
+      font-size: 4rem;
+    }
+  }
+
+  li {
+    margin-left: 2rem;
+  }
+}
+
+.part-of-speech {
+  &__text {
+    font-size: 1.5rem;
+    font-style: italic;
+    margin: 1rem 0;
+  }
+
+  &__stripe {
+    display: block;
+    height: 1px;
+    width: 100%;
+    background-color: $accent-color;
+  }
 }
