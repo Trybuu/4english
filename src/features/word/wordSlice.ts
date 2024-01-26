@@ -2,7 +2,9 @@ import { createSlice } from '@reduxjs/toolkit'
 import { Word } from '../../helpers/getRandomWord'
 
 const initialState = {
-  word: null as Word[] | null,
+  word: {
+    word: null as Word[] | null,
+  },
 }
 
 export const wordSlice = createSlice({
@@ -12,7 +14,6 @@ export const wordSlice = createSlice({
     increment: (state, action) => {
       const word = action.payload
       state.word = word
-      console.log(word)
     },
   },
 })
