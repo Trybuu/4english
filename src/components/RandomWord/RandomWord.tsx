@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react'
 import getRandomWord, { Word } from '../../helpers/getRandomWord'
 
 import classes from './RandomWord.module.scss'
+import LoadingEffect from '../../ui/loadingEffect/LoadingEffect'
 
 export default function RandomWord() {
   const [word, setWord] = useState<Word[] | null>()
@@ -25,8 +26,11 @@ export default function RandomWord() {
   return (
     <section className={classes['random-word-wrapper']}>
       <h2>Random word</h2>
+
       {isLoading ? (
-        <h3>Loading...</h3>
+        <h3>
+          <LoadingEffect />
+        </h3>
       ) : (
         <h3>{word ? word[0].word : 'Unable to fetch word'}</h3>
       )}
