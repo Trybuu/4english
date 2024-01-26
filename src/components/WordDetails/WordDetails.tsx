@@ -1,36 +1,43 @@
 import { useSelector } from 'react-redux'
-import classes from './WordDetails.module.scss'
 import { useEffect, useState } from 'react'
 
 import { Word } from '../../helpers/getRandomWord'
 import MainWordDetails from './MainWordDetails/MainWordDetails'
 
+import classes from './WordDetails.module.scss'
+
 interface WordState {
-  word: Word[] | null
+  word: {
+    word: Word[]
+  }
 }
 
 export default function WordDetails() {
-  const data = useSelector((state: WordState) => state.word)
+  const data: WordState = useSelector((state: WordState) => {
+    console.log('⚠️⚠️⚠️')
+    console.log(state)
+    return state.word
+  })
+
   const [wordData, setWordData] = useState<Word[] | null>(null)
 
   useEffect(() => {
+    const newWord = data?.word ?? null
     if (data.word !== null) {
-      setWordData(data.word.word)
+      console.log(data)
+      setWordData(newWord.word)
     }
   }, [data])
 
-  function renderAudioPlayer(source: string) {
-    if (source) return <span>Audio Play</span>
-  }
-
+  console.log(wordData)
   return (
     <>
       <section className={classes['section-wrapper']}>
         <h2>Word Details</h2>
 
         {wordData === null
-          ? ''
-          : wordData.map((data, index) => (
+          ? null
+          : wordData.map((data) => (
               <>
                 <section
                   className={classes['word-details']}
@@ -43,7 +50,7 @@ export default function WordDetails() {
                   <div>
                     {data.meanings.map((meaning, index) => {
                       return (
-                        <>
+                        <div key={index}>
                           <div
                             className={classes['part-of-speech']}
                             key={index * Math.random()}
@@ -66,7 +73,7 @@ export default function WordDetails() {
                               )
                             })}
                           </ul>
-                        </>
+                        </div>
                       )
                     })}
                   </div>

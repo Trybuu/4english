@@ -1,5 +1,5 @@
 import { useEffect, useMemo } from 'react'
-import playIcon from '../../../../public/icons/play-solid.svg'
+import playIcon from '/icons/play-solid.svg'
 import classes from './MainWordDetails.module.scss'
 
 interface Phonetic {
@@ -92,7 +92,7 @@ export default function MainWordDetails({ word, phonetics }: MainWordProps) {
       <h1 className={classes['word']}>{word}</h1>
       {phonetics.map((phonetic, index) => (
         <div className={classes['phonetics']} key={index}>
-          <p>{phonetic.text}</p>
+          <p>{phonetic.text ? phonetic.text : '/no phonetic notation/'}</p>
           {renderAudioPlayButtons(phoneticsAudioUrls, index)}
         </div>
       ))}
