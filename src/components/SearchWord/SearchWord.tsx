@@ -1,5 +1,5 @@
 import { useDispatch } from 'react-redux'
-import { increment } from '../../features/word/wordSlice'
+import { setWord } from '../../features/word/wordSlice'
 import { useRef } from 'react'
 
 import classes from './SearchWord.module.scss'
@@ -20,7 +20,7 @@ export default function SearchWord() {
         }`,
       )
 
-      dispatch(increment({ word: response.data }))
+      dispatch(setWord(response.data))
     } catch (error) {
       console.log(error)
     }
