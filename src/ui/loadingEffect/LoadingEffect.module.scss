@@ -1,0 +1,54 @@
+@import '../../styles/variables';
+
+.loading-circle {
+  position: relative;
+  width: 1.8rem;
+  height: 1.8rem;
+
+  animation: 2s infinite rotate;
+
+  &__outer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    height: 1.8rem;
+    width: 1.8rem;
+
+    box-shadow: 2px 2px 4px -2px rgba(0, 0, 0, 0.15);
+    border-radius: 50%;
+    border: 1px solid white;
+  }
+
+  &__inner {
+    height: 1.6rem;
+    width: 1.6rem;
+    border: 2px solid $accent-color;
+    border-radius: 50%;
+    box-shadow: inset 2px 3px 2px -2px rgba(0, 0, 0, 0.2);
+  }
+
+  &__point {
+    position: absolute;
+    top: 3px;
+    left: 5px;
+    height: 0.5rem;
+    width: 0.5rem;
+
+    background-color: #fff;
+    border: 2px solid $accent-color;
+    border-radius: 50%;
+  }
+}
+
+@keyframes rotate {
+  from {
+    transform: rotate(0);
+  }
+  50% {
+    transform: rotate(-230deg);
+  }
+  to {
+    transform: rotate(0);
+  }
+}

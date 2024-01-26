@@ -10,7 +10,6 @@ export const wordSlice = createSlice({
   initialState,
   reducers: {
     setWord: (state, action) => {
-      console.log(action.payload)
       state.word.wordData = action.payload
     },
   },
