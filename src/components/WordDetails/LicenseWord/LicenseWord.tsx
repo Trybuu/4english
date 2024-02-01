@@ -11,7 +11,7 @@ interface PropsTypes {
 export default function LicenseWord({ license, sourceUrls }: PropsTypes) {
   return (
     <div>
-      <p>License</p>
+      <p className={classes['title']}>License</p>
       <div className={classes['content']}>
         <p>
           <a href={license.url}>{license.name}</a>
