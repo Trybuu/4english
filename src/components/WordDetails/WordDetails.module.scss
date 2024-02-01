@@ -9,18 +9,3 @@
     margin-left: 2rem;
   }
 }
-
-.part-of-speech {
-  &__text {
-    font-size: 1.5rem;
-    font-style: italic;
-    margin: 1rem 0;
-  }
-
-  &__stripe {
-    display: block;
-    height: 1px;
-    width: 100%;
-    background-color: $accent-color;
-  }
-}

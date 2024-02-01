@@ -11,6 +11,7 @@ export const wordSlice = createSlice({
   reducers: {
     setWord: (state, action) => {
       state.word.wordData = action.payload
+      console.log(action.payload)
     },
   },
 })

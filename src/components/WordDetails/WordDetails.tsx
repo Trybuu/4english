@@ -6,6 +6,8 @@ import MainWordDetails from './MainWordDetails/MainWordDetails'
 
 import classes from './WordDetails.module.scss'
 import LoadingEffect from '../../ui/loadingEffect/LoadingEffect'
+import DefinitionWordDetails from './DefinitionWordDetails/DefinitionWordDetails'
+import LicenseWord from './LicenseWord/LicenseWord'
 
 // TODO: Fix this data type...
 interface WordState {
@@ -30,40 +32,15 @@ export default function WordDetails() {
       {wordData === null ? (
         <LoadingEffect />
       ) : (
-        wordData.map((data) => (
-          <section className={classes['section-wrapper']}>
+        wordData.map((data, index) => (
+          <section key={index} className={classes['section-wrapper']}>
             <section className={classes['word-details']} key={Math.random()}>
               <MainWordDetails word={data.word} phonetics={data.phonetics} />
-              <div>
-                {data.meanings.map((meaning, index) => {
-                  return (
-                    <div key={index}>
-                      <div
-                        className={classes['part-of-speech']}
-                        key={index * Math.random()}
-                      >
-                        <p className={classes['part-of-speech__text']}>
-                          {meaning.partOfSpeech}
-                          <span
-                            className={classes['part-of-speech__stripe']}
-                          ></span>
-                        </p>
-                      </div>
-
-                      <h4>Definition</h4>
-                      <ul>
-                        {meaning.definitions.map((definition) => {
-                          return (
-                            <ul key={definition.definition}>
-                              <li>{definition.definition}</li>
-                            </ul>
-                          )
-                        })}
-                      </ul>
-                    </div>
-                  )
-                })}
-              </div>
+              <DefinitionWordDetails meanings={data.meanings} />
+              <LicenseWord
+                license={data.license}
+                sourceUrls={data.sourceUrls}
+              />
             </section>
           </section>
         ))
