@@ -1,0 +1,32 @@
+@import '../../../styles/variables';
+
+.meaning {
+  &__wrapper {
+    margin: 1rem 0;
+  }
+  &__title {
+    font-weight: 700;
+  }
+  &__part-of-speech {
+    margin: 1rem 0;
+
+    font-size: 1.5rem;
+    font-style: italic;
+    border-bottom: 2px solid $accent-color;
+  }
+
+  &__content {
+    padding: 1rem;
+  }
+
+  &__nosynonyms {
+    font-weight: 500;
+    font-style: italic;
+  }
+
+  &__synonyms {
+    font-weight: 500;
+    font-style: italic;
+    color: $accent-color;
+  }
+}
